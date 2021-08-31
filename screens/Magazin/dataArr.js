@@ -7,7 +7,7 @@ export const magazinArr = [
     tags: ['# 국내여행', '# 서울여행', '# 여행안전지수'],
     date: '2021-08-01 09:00',
     // img: require('@assets/magazin_1.png'),
-    img: { uri: 'https://i.postimg.cc/dVHcr0nX/magazin-1.png' },
+    img: { uri: 'https://i.postimg.cc/R08Ht6SP/magazin-1.png' },
   },
   {
     path: '매거진',
@@ -17,7 +17,7 @@ export const magazinArr = [
     tags: ['# 이벤트', '# 혜화1938', '# 한옥숙소'],
     date: '2021-08-01 09:00',
     // img: require('@assets/magazin_2.png'),
-    img: { uri: 'https://i.postimg.cc/8cBq5kjZ/magazin-2.png' },
+    img: { uri: 'https://i.postimg.cc/FzbdwTjq/magazin-2.png' },
   },
   {
     path: '매거진',
@@ -27,7 +27,7 @@ export const magazinArr = [
     tags: ['# 국내여행', '# 제주도여행', '# 제주도'],
     date: '2021-08-01 09:00',
     // img: require('@assets/magazin_3.png'),
-    img: { uri: 'https://i.postimg.cc/BvLkFBjL/magazin-3.png' },
+    img: { uri: 'https://i.postimg.cc/MppV45Rn/magazin-3.png' },
   },
   {
     path: '매거진',
@@ -37,7 +37,7 @@ export const magazinArr = [
     tags: ['# 블루보틀', '# 제주카페', '# 제주여행'],
     date: '2021-08-01 09:00',
     // img: require('@assets/magazin_4.png'),
-    img: { uri: 'https://i.postimg.cc/jdMFkFNn/magazin-4.png' },
+    img: { uri: 'https://i.postimg.cc/fyWRL2MX/magazin-4.png' },
   },
   {
     path: '매거진',
@@ -47,6 +47,6 @@ export const magazinArr = [
     tags: ['# 등대', '# 바다', '# 사진맛집'],
     date: '2021-08-01 09:00',
     // img: require('@assets/sea2.png'),
-    img: { uri: 'https://i.postimg.cc/T39rTKfK/sea2.png' },
+    img: { uri: 'https://i.postimg.cc/SxVR0pq4/sea2.png' },
   },
 ];
