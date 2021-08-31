@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">travel</string>
+    <string name="app_name">떠나자 여행</string>
     <string name="kakao_app_key">f40190d3e5fa5c3ac7ace65faa770cd8</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey"> 1NkB1HsxUxSMpZ04zi7CXyHJyTWt0j8GQ_zoF</string>
+    <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
+    <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
 </resources>
