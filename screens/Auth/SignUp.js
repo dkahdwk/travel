@@ -187,7 +187,7 @@ const SignUp = ({ navigation }) => {
               <IconButton onPress={() => {
                 setUserInformation({ ...userInformation, email: '' })
               }}>
-                <DeleteImage source={require('@assets/login-delete.png')} />
+                <DeleteImage source={{ uri: 'https://i.postimg.cc/xdKbxB7K/login-delete.png' }} />
               </IconButton>
             }
           </SignUpInputBorder>
@@ -224,7 +224,7 @@ const SignUp = ({ navigation }) => {
               <IconButton onPress={() => {
                 setUserInformation({ ...userInformation, pw: '' })
               }}>
-                <DeleteImage source={require('@assets/login-delete.png')} />
+                <DeleteImage source={{ uri: 'https://i.postimg.cc/xdKbxB7K/login-delete.png' }} />
               </IconButton>
             }
           </SignUpInputBorder>
@@ -261,7 +261,7 @@ const SignUp = ({ navigation }) => {
               <IconButton onPress={() => {
                 setUserInformation({ ...userInformation, confirmPw: '' })
               }}>
-                <DeleteImage source={require('@assets/login-delete.png')} />
+                <DeleteImage source={{ uri: 'https://i.postimg.cc/xdKbxB7K/login-delete.png' }} />
               </IconButton>
             }
           </SignUpInputBorder>

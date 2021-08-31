@@ -226,3 +226,11 @@ export const ConfirmButtonText = styled.Text`
   font-size: 16px;
   color: #fff;
 `;
+
+export const Version = styled.Text`
+  font-family: Roboto-Regular;
+  font-size: 12px;
+  color: gray;
+  position: absolute;
+  bottom: 30px;
+`;

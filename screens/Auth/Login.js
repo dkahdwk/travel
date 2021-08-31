@@ -1,14 +1,14 @@
 import React, { useState, useRef, useContext } from 'react';
 import {
-  TouchableOpacity,
   TouchableWithoutFeedback,
   ActivityIndicator,
   Keyboard,
   Alert,
 } from 'react-native';
-import { getProfile as getKakaoProfile, login } from '@react-native-seoul/kakao-login';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import DeviceInfo from 'react-native-device-info';
+import { getProfile as getKakaoProfile, login } from '@react-native-seoul/kakao-login';
 import { StatusBarComponent } from '@components/StatusBarComponent';
 import { ENUM_BORDER_COLOR } from '@util/enum';
 import { UserContext } from '@store/StateStore';
@@ -34,6 +34,7 @@ import {
   MembershipButton,
   MembershipText,
   GrayLine,
+  Version,
 } from './styles';
 
 const Login = ({ navigation, route }) => {
@@ -179,7 +180,8 @@ const Login = ({ navigation, route }) => {
             flex: 1, justifyContent: 'center', alignItems: 'center'
           }}
         >
-          <AppIcon source={require('@assets/app_icon.png')} />
+          {/* <AppIcon source={require('@assets/app_icon_120.png')} /> */}
+          <AppIcon source={{ uri: 'https://i.postimg.cc/Zq9d8CPD/app-icon-120.png' }} />
           <InputBorder style={{ borderColor: borderColor.email }}>
             <Input
               value={userInformation.email}
@@ -200,7 +202,7 @@ const Login = ({ navigation, route }) => {
             />
             {userInformation.email !== "" &&
               <IconButton onPress={() => setUserInformation({ ...userInformation, email: '' })}>
-                <DeleteImage source={require('@assets/login-delete.png')} />
+                <DeleteImage source={{ uri: 'https://i.postimg.cc/xdKbxB7K/login-delete.png' }} />
               </IconButton>
             }
           </InputBorder>
@@ -225,7 +227,7 @@ const Login = ({ navigation, route }) => {
             />
             {userInformation.pw !== "" &&
               <IconButton onPress={() => setUserInformation({ ...userInformation, pw: '' })}>
-                <DeleteImage source={require('@assets/login-delete.png')} />
+                <DeleteImage source={{ uri: 'https://i.postimg.cc/xdKbxB7K/login-delete.png' }} />
               </IconButton>
             }
             <IconButton onPress={secureTextButton}>
@@ -249,7 +251,7 @@ const Login = ({ navigation, route }) => {
             disabled={store.kakaoAccessToken === null ? false : true}
             onPress={signInWithKakao}
           >
-            <KakaoLogo source={require('@assets/kakao_logo.png')} />
+            <KakaoLogo source={{ uri: 'https://i.postimg.cc/R0b2YbHZ/kakao-logo.png' }} />
             {store.kakaoAccessToken === null
               ? <KakaoButtonText>카카오로 로그인</KakaoButtonText>
               : <KakaoButtonText style={{ color: 'white' }}>카카오로 로그인중입니다</KakaoButtonText>
@@ -277,6 +279,7 @@ const Login = ({ navigation, route }) => {
               </MembershipText>
             </MembershipButton>
           </MembershipView>
+          <Version>{DeviceInfo.getVersion()}</Version>
         </Container>
       </>
     </TouchableWithoutFeedback>

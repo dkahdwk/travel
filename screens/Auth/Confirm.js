@@ -67,7 +67,8 @@ const Confirm = ({ navigation }) => {
       <>
         <NavTop navigation={navigation} />
         <Container contentContainerStyle={{ flex: 1, alignItems: 'center' }}>
-          <AppIcon source={require('@assets/app_icon.png')} />
+          {/* <AppIcon source={require('@assets/app_icon_120.png')} /> */}
+          <AppIcon source={{ uri: 'https://i.postimg.cc/Zq9d8CPD/app-icon-120.png' }} />
           <Title>비밀번호 재설정</Title>
           <MidContainer>
             <ConfirmSubtitle>
@@ -88,7 +89,7 @@ const Confirm = ({ navigation }) => {
               />
               {email !== "" &&
                 <IconButton onPress={() => setEmail('')}>
-                  <DeleteImage source={require('@assets/login-delete.png')} />
+                  <DeleteImage source={{ uri: 'https://i.postimg.cc/xdKbxB7K/login-delete.png' }} />
                 </IconButton>
               }
             </ConfirmInputBorder>

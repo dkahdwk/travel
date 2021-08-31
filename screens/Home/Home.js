@@ -154,7 +154,8 @@ const Home = ({ navigation }) => {
             <MenuTitle>{"트렌드 & 이슈"}</MenuTitle>
             <Subtitle>최신 여행 정보를 누구보다 빠르게</Subtitle>
           </TrandLeftView>
-          <RightArrow source={require('@assets/arrow-right.png')} />
+          {/* <RightArrow source={require('@assets/arrow-right.png')} /> */}
+          <RightArrow source={{ uri: 'https://i.postimg.cc/RVYWdvP3/arrow-right.png' }} />
         </TrandButton>
         <TrandGallery>
           {magazinArr.map((item, index) => (
