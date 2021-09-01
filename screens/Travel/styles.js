@@ -39,14 +39,14 @@ export const UserView = styled.View`
 `;
 
 export const UserImg = styled.Image`
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 100px;
 `;
 
 export const Username = styled.Text`
   font-family: Roboto-Regular;
-  font-size: 16px;
+  font-size: 14px;
   color: #4f4f4f;
   margin: 0 0 0 7.5px;
 `;
@@ -60,7 +60,7 @@ export const Picture = styled.Image`
 
 export const TravelTitle = styled.Text`
   font-family: Roboto-Regular;
-  font-size: 21px;
+  font-size: 20px;
   color: #333;
   margin: 20px 0 10px 5px;
   padding: 0 20px 0 0;
