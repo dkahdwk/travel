@@ -134,7 +134,7 @@ const Login = ({ navigation, route }) => {
           emailRef.current.focus();
         }}
       ]);
-    } else if (userInformation.email !== 'gkahk@naver.com' && userInformation.email !== store.email) {
+    } else if (userInformation.email !== 'test@naver.com' && userInformation.email !== store.email) {
       return Alert.alert('오류', '일치하는 이메일이 존재하지 않습니다.', [
         { text: "확인", onPress: () => setLoading(false) }
       ]);
