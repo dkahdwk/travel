@@ -38,7 +38,7 @@ const TabNavigation = () => {
       tabBarOptions={{
         showLabel: true,
         labelStyle: Platform.OS === 'ios' ? { fontSize: 13 } : { fontSize: 11, paddingBottom: 5 },
-        style: Platform.OS === 'ios' ? { borderTopWidth: 1 } : { borderTopWidth: 1, height: 55, paddingBottom: 2.5 }
+        style: Platform.OS === 'ios' ? { borderTopWidth: 1 } : { borderTopWidth: 1, height: 60, paddingBottom: 2.5 }
       }}
     >
       <Tab.Screen name="홈" component={HomeNavigation} />
