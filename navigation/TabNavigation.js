@@ -17,22 +17,22 @@ const TabNavigation = () => {
         tabBarIcon: ({ focused, size, color }) => {
           let iconName;
           if (route.name === '홈') {
-            iconName = focused ? 'home' : 'home'
-            color = focused ? '#2ed6df' : '#ccc'
+            iconName = focused ? 'home' : 'home';
+            color = focused ? '#2ed6df' : '#ccc';
           } else if (route.name === '매거진') {
-            iconName = focused ? 'stacked-line-chart' : 'stacked-line-chart'
-            color = focused ? '#2ed6df' : '#ccc'
+            iconName = focused ? 'stacked-line-chart' : 'stacked-line-chart';
+            color = focused ? '#2ed6df' : '#ccc';
           } else if (route.name === '여행기') {
-            iconName = focused ? 'map' : 'map'
-            color = focused ? '#2ed6df' : '#ccc'
+            iconName = focused ? 'map' : 'map';
+            color = focused ? '#2ed6df' : '#ccc';
           } else if (route.name === '업로드') {
-            iconName = focused ? 'photo-library' : 'photo-library'
-            color = focused ? '#2ed6df' : '#ccc'
+            iconName = focused ? 'photo-library' : 'photo-library';
+            color = focused ? '#2ed6df' : '#ccc';
           } else if (route.name === '프로필') {
             iconName = focused ? 'account-circle' : 'account-circle'
-            color = focused ? '#2ed6df' : '#ccc'
+            color = focused ? '#2ed6df' : '#ccc';
           }
-          return <Icon name={iconName} color={color} size={27} />
+          return <Icon name={iconName} color={color} size={26} />
         },
       })}
       tabBarOptions={{
