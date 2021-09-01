@@ -69,7 +69,7 @@ const SignUp = ({ navigation }) => {
         { text: "확인", onPress: () => setCheckEmail(false)}
       ]);
     } else if (!emailRegex.test(userInformation.email)) {
-      return Alert.alert('오류', '옳바른 이메일 형식을 입력해주세요.', [
+      return Alert.alert('오류', '올바른 이메일 형식을 입력해주세요.', [
         { text: "확인", onPress: () => {
           setLoading(false);
           emailRef.current.focus();
@@ -97,7 +97,7 @@ const SignUp = ({ navigation }) => {
         }}
       ]);
     } else if (!emailRegex.test(userInformation.email)) {
-      return Alert.alert('오류', '옳바른 이메일 형식을 입력해주세요.', [
+      return Alert.alert('오류', '올바른 이메일 형식을 입력해주세요.', [
         { text: "확인", onPress: () => {
           setLoading(false);
           emailRef.current.focus();
