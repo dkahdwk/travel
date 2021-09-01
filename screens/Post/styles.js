@@ -100,6 +100,7 @@ export const Input = styled.TextInput`
   font-size: 14px;
   color: #4a4a4a;
   padding: 0;
+  text-align-vertical: top;
 `;
 
 export const IconButton = styled.TouchableOpacity`
