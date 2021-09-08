@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { StatusBarComponent } from '@components/StatusBarComponent';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
-const NavTop = ({ navigation, closeModal, title }) => {
+export interface NavProps {
+  navigation: any;
+  closeModal: any;
+  title: string;
+};
+
+const NavTop: FC<NavProps> = ({ navigation, closeModal, title }) => {
   const buttonHandler = () => {
     if (navigation === undefined) {
       closeModal();

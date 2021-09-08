@@ -1,6 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { FC, useState, useRef } from 'react';
 import {
-  TouchableOpacity,
   TouchableWithoutFeedback,
   ActivityIndicator,
   Keyboard,
@@ -22,11 +21,15 @@ import {
   ConfirmButtonText,
 } from './styles';
 
-const Confirm = ({ navigation }) => {
+interface Props {
+  navigation: any;
+};
+
+const Confirm: FC<Props> = ({ navigation }) => {
   const regex = / /gi;
   const space = /\s/g; 
   const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const emailRef = useRef();
+  const emailRef = useRef<any>();
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [borderColor, setBorderColor] = useState(ENUM_BORDER_COLOR.INACTIVE);
@@ -65,7 +68,7 @@ const Confirm = ({ navigation }) => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <>
-        <NavTop navigation={navigation} />
+        <NavTop navigation={navigation} title={''} closeModal={null} />
         <Container contentContainerStyle={{ flex: 1, alignItems: 'center' }}>
           {/* <AppIcon source={require('@assets/app_icon_120.png')} /> */}
           <AppIcon source={{ uri: 'https://i.postimg.cc/Zq9d8CPD/app-icon-120.png' }} />
@@ -77,7 +80,7 @@ const Confirm = ({ navigation }) => {
             <ConfirmInputBorder style={{ borderColor: borderColor }}>
               <Input
                 value={email}
-                onChangeText={(value) => setEmail(value)}
+                onChangeText={(value: string) => setEmail(value)}
                 placeholder={'이메일 주소'}
                 placeholderTextColor="#c4c4c4"
                 autoCorrect={false}

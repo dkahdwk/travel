@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, useEffect } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import { RefreshControl, TouchableOpacity, FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Menu from '@screens/Menu/Menu';
@@ -25,11 +25,22 @@ import {
   Like,
 } from './styles';
 
-const Travel = ({ navigation }) => {
+interface Props {
+  navigation: any;
+};
+
+interface ModalState {
+  content: object;
+  menuVisible: boolean;
+  searchVisible: boolean;
+  postVisible: boolean;
+};
+
+const Travel: FC<Props> = ({ navigation }) => {
   const store = useContext(UserContext);
   const [loader, setLoader] = useState(false);
-  const [modal, setModal] = useState({
-    content: '',
+  const [modal, setModal] = useState<ModalState>({
+    content: {},
     menuVisible: false,
     searchVisible: false,
     postVisible: false,
@@ -42,7 +53,7 @@ const Travel = ({ navigation }) => {
   };
 
   // onPress event of list
-  const showPostModal = (item) => {
+  const showPostModal = (item: object) => {
     setModal({ ...modal, content: item, postVisible: true });
   };
 
@@ -88,7 +99,12 @@ const Travel = ({ navigation }) => {
         <FlatList
           data={travelArr}
           contentContainerStyle={{ paddingBottom: 40 }}
-          refreshControl={<RefreshControl onRefresh={() => temporaryLoader()} />}
+          refreshControl={
+            <RefreshControl
+              refreshing={loader}
+              onRefresh={() => temporaryLoader()}
+            />
+          }
           ListHeaderComponent={
             <Title>
               <PointTitle>기억</PointTitle>을 담아.{"\n"}

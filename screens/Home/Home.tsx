@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, useEffect } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import { TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Carousel from 'react-native-banner-carousel-updated';
@@ -23,8 +23,6 @@ import {
   BannerConainer,
   BannerButton,
   Banner,
-  CircleView,
-  Circle,
   TrandButton,
   TrandLeftView,
   MenuTitle,
@@ -47,27 +45,35 @@ import {
   FooterSubtitle
 } from './styles';
 
-const Home = ({ navigation }) => {
-  const store = useContext(UserContext);
-  const bannderFlatList = useRef();
-  const [modal, setModal] = useState({
-    content: '',
+interface Props {
+  navigation: any;
+};
+
+interface StateTypes {
+  content: object;
+  menuVisible: boolean;
+  searchVisible: boolean;
+  magazinVisible: boolean;
+  postVisible: boolean;
+};
+
+const Home: FC<Props> = ({ navigation }) => {
+  const store = useContext<any>(UserContext);
+  const [modal, setModal] = useState<StateTypes>({
+    content: {},
     menuVisible: false,
     searchVisible: false,
     magazinVisible: false,
     postVisible: false,
   });
 
-  const showPostModal = (item) => {
+  const showPostModal = (item: object) => {
     setModal({ ...modal, content: item, postVisible: true });
   };
 
-  const showMagazinModal = (item) => {
+  const showMagazinModal = (item: object) => {
     setModal({ ...modal, content: item, magazinVisible: true });
   };
-
-  useEffect(() => {
-  }, []);
 
   return (
     <Container>
@@ -158,7 +164,7 @@ const Home = ({ navigation }) => {
           <RightArrow source={{ uri: 'https://i.postimg.cc/RVYWdvP3/arrow-right.png' }} />
         </TrandButton>
         <TrandGallery>
-          {magazinArr.map((item, index) => (
+          {magazinArr.map((item: { img: any, title: string }, index: number) => (
             index < 4 &&
               <GalleryButton
                 key={index}

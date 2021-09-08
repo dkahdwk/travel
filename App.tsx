@@ -25,7 +25,7 @@ let codePushOptions = {
 };
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState<any>(null);
 
   const preLoad = async () => {
     const isLoggedIn = await AsyncStorage.getItem("isLoggedIn");
@@ -57,7 +57,7 @@ const App = () => {
   }, []);
 
   return isLoggedIn !== null && (
-    <AuthProvider isLoggedIn={isLoggedIn}>
+    <AuthProvider isLoggedInProp={isLoggedIn}>
       <StoreProvider>
         <NavController />
       </StoreProvider>

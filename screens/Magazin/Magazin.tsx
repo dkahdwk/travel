@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import { TouchableOpacity, FlatList, RefreshControl } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Menu from '@screens/Menu/Menu';
@@ -26,11 +26,22 @@ import {
   NewsTags
 } from './styles';
 
-const Magazin = ({ navigation }) => {
+interface Props {
+  navigation: any;
+};
+
+interface ModalState {
+  content: object;
+  menuVisible: boolean;
+  searchVisible: boolean;
+  magazinVisible: boolean;
+};
+
+const Magazin: FC<Props> = ({ navigation }) => {
   const store = useContext(UserContext);
   const [loader, setLoader] = useState(false);
-  const [modal, setModal] = useState({
-    content: '',
+  const [modal, setModal] = useState<ModalState>({
+    content: {},
     menuVisible: false,
     searchVisible: false,
     magazinVisible: false,
@@ -42,7 +53,7 @@ const Magazin = ({ navigation }) => {
     setTimeout(() => setLoader(false), 700);
   };
 
-  const showMagazinModal = (item) => {
+  const showMagazinModal = (item: object) => {
     setModal({ ...modal, content: item, magazinVisible: true });
   };
 
@@ -88,7 +99,12 @@ const Magazin = ({ navigation }) => {
         <FlatList
           data={magazinArr}
           contentContainerStyle={{ paddingBottom: 40 }}
-          refreshControl={<RefreshControl onRefresh={() => temporaryLoader()} />}
+          refreshControl={
+            <RefreshControl
+              refreshing={loader}
+              onRefresh={() => temporaryLoader()}
+            />
+          }
           ListHeaderComponent={
             <Title>
               요즘 <PointTitle>여행</PointTitle>은?{"\n"}
