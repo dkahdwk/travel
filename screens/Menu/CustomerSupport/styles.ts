@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import constants from "@root/constants";
 
 export const ModalView = styled.View`

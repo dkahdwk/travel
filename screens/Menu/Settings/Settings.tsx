@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import { Image, Alert } from 'react-native';
 import NavTop from '@components/NavTop';
 import Modal from 'react-native-modal';
@@ -20,7 +20,12 @@ import {
   ButtonText,
 } from './styles';
 
-const Settings = ({ visible, closeModal }) => {
+interface Props {
+  visible: boolean;
+  closeModal: any;
+};
+
+const Settings: FC<Props> = ({ visible, closeModal }) => {
   const store = useContext(UserContext);
   const generalLogout = useLogOut();
   const [modalVisible, setModalVisible] = useState({
@@ -38,7 +43,7 @@ const Settings = ({ visible, closeModal }) => {
       store.kakaoAccessToken = null;
       await AsyncStorage.removeItem('kakao_user_information');
       await logout();
-    } catch (e) {
+    } catch (error) {
       console.log(error);
     }
   };
@@ -67,7 +72,7 @@ const Settings = ({ visible, closeModal }) => {
     }
   };
 
-  const handleListPress = (content) => {
+  const handleListPress = (content: string) => {
     if (content === '계정 정보') {
       setModalVisible({ ...modalVisible, profileInformation: true });
     }
@@ -91,7 +96,7 @@ const Settings = ({ visible, closeModal }) => {
       style={{ margin: 0, alignItems: 'flex-end' }}
     >
       <ModalView>
-        <NavTop closeModal={closeModal} title={"설정"} />
+        <NavTop navigation={undefined} closeModal={closeModal} title={"설정"} />
         <ProfileInformation
           visible={modalVisible.profileInformation}
           closeModal={() => setModalVisible({ ...modalVisible, profileInformation: false })}

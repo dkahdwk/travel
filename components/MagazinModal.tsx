@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { ScrollView } from 'react-native';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import styled from 'styled-components';
-import constants from "@root/constants";
+import styled from 'styled-components/native';
 import { TransparentStatusBarComponent } from '@components/StatusBarComponent';
 
-const MagazinModal = ({ content, visible, closeModal }) => {
+interface MagazinProps {
+  content: {
+    label: string,
+    path: string,
+    title: string,
+    date: string,
+    tags: { map: any },
+    img: {},
+    content: string,
+  };
+  visible: boolean;
+  closeModal: any;
+};
+
+const MagazinModal: FC<MagazinProps> = ({ content, visible, closeModal }) => {
   return (
     <Modal
       isVisible={visible}
@@ -34,7 +47,7 @@ const MagazinModal = ({ content, visible, closeModal }) => {
             <Title>{content.title}</Title>
             <Date>{content.date}</Date>
             <FlexRowView style={{ marginTop: 15 }}>
-              {content.tags !== undefined && content.tags.map((item, index) => (
+              {content.tags !== undefined && content.tags.map((item: string, index: number) => (
                 <TagBox key={index}>
                   <Tag>{item}</Tag>
                 </TagBox>

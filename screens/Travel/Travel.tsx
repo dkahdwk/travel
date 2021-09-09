@@ -30,7 +30,7 @@ interface Props {
 };
 
 interface ModalState {
-  content: object;
+  content: any;
   menuVisible: boolean;
   searchVisible: boolean;
   postVisible: boolean;
@@ -38,7 +38,7 @@ interface ModalState {
 
 const Travel: FC<Props> = ({ navigation }) => {
   const store = useContext(UserContext);
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState<boolean>(false);
   const [modal, setModal] = useState<ModalState>({
     content: {},
     menuVisible: false,

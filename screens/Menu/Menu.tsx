@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import { View, Image } from 'react-native';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -21,9 +21,23 @@ import {
   MenuLeft,
 } from './styles';
 
-const Menu = ({ navigation, visible, closeModal, username }) => {
+interface Props {
+  navigation: any;
+  visible: boolean;
+  closeModal: any;
+  username: string;
+};
+
+interface ModalVisibelProps {
+  notice: boolean;
+  customerSupport: boolean;
+  event: boolean;
+  settings: boolean;
+}
+
+const Menu: FC<Props> = ({ navigation, visible, closeModal, username }) => {
   const store = useContext(UserContext);
-  const [modalVisible, setModalVisible] = useState({
+  const [modalVisible, setModalVisible] = useState<ModalVisibelProps>({
     notice: false,
     customerSupport: false,
     event: false,
@@ -36,7 +50,7 @@ const Menu = ({ navigation, visible, closeModal, username }) => {
     { icon: 'event-available', title: '이벤트', destination: 'event' },
   ];
 
-  const goMenuList = (destination) => {
+  const goMenuList = (destination: string) => {
     if (destination === 'notice') {
       setModalVisible({ ...modalVisible, notice: true });
     } else if (destination === 'customerSupport') {

@@ -9,7 +9,6 @@ import { observer } from 'mobx-react-lite';
 const NavController = () => {
   const store = useContext<any>(UserContext);
   const isLoggedIn = useIsLoggedIn();
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     AsyncStorage.getItem('user_information', (err, result: any) => {

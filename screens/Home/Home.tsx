@@ -50,7 +50,7 @@ interface Props {
 };
 
 interface StateTypes {
-  content: object;
+  content: any;
   menuVisible: boolean;
   searchVisible: boolean;
   magazinVisible: boolean;

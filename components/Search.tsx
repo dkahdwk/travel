@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import {
   TouchableWithoutFeedback,
   Keyboard,
   FlatList,
-  RefreshControl
+  RefreshControl,
+  Platform,
 } from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import constants from "@root/constants";
 import Modal from 'react-native-modal';
 import Loader from '@components/Loader';
@@ -27,14 +28,25 @@ import {
   NewsTags
 } from '@screens/Magazin/styles';
 
-const Search = ({ visible, closeModal}) => {
-  const [loader, setLoader] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
-  const [category, setCategory] = useState('magazin');
-  const [magazinCategory, setMagazinCategory] = useState('전체');
-  const [data, setData] = useState(magazinArr);
-  const [modal, setModal] = useState({
-    content: '',
+interface Props {
+  visible: boolean;
+  closeModal: any;
+};
+
+interface ModalProps {
+  content: any;
+  magazinVisible: boolean;
+  postVisible: boolean;
+};
+
+const Search: FC<Props> = ({ visible, closeModal }) => {
+  const [loader, setLoader] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [category, setCategory] = useState<string>('magazin');
+  const [magazinCategory, setMagazinCategory] = useState<string>('전체');
+  const [data, setData] = useState<any[]>(magazinArr);
+  const [modal, setModal] = useState<ModalProps>({
+    content: [],
     magazinVisible: false,
     postVisible: false,
   });
@@ -54,8 +66,8 @@ const Search = ({ visible, closeModal}) => {
   };
 
   // Search value filter
-  const searchFilter = (array, text) => {
-    const newData = array.filter((item) => {
+  const searchFilter = (array: { filter: any }, text: string) => {
+    const newData = array.filter((item: { title: string }) => {
       const itemData = item.title ? item.title.toUpperCase() : ''.toUpperCase();
       const textData = text.toUpperCase();
       return itemData.indexOf(textData) > -1;
@@ -75,7 +87,7 @@ const Search = ({ visible, closeModal}) => {
   };
 
   // Select category
-  const handleCategory = (categoryName) => {
+  const handleCategory = (categoryName: string) => {
     setCategory(categoryName);
 
     if (categoryName === 'magazin') {
@@ -86,13 +98,13 @@ const Search = ({ visible, closeModal}) => {
   };
 
   // Select magazin subcategory
-  const selectMagazinCategory = (item) => {
+  const selectMagazinCategory = (item: string) => {
     searchLoader();
     setMagazinCategory(item);
   };
 
   // onPress event of list
-  const handleListPress = (item) => {
+  const handleListPress = (item: object) => {
     if (category === 'magazin') {
       setModal({ ...modal, content: item, magazinVisible: true })
     } else if (category === 'travel') {
@@ -101,7 +113,7 @@ const Search = ({ visible, closeModal}) => {
   };
 
   // 매거진 하위 카테고리 선택시 해당 카테고리의 리스트만 출력 예외처리
-  const handleCategoryException = (item) => {
+  const handleCategoryException = (item: { label: string }) => {
     if (magazinCategory !== '전체') {
       if (magazinCategory === item.label) {
         return true;
@@ -218,27 +230,34 @@ const Search = ({ visible, closeModal}) => {
                 key={'_'}
                 data={data}
                 contentContainerStyle={{ flexGrow: 1, paddingBottom: 40 }}
-                refreshControl={<RefreshControl onRefresh={() => temporaryLoader()} />}
+                refreshControl={
+                  <RefreshControl
+                    refreshing={loader}
+                    onRefresh={() => temporaryLoader()}
+                  />
+                }
                 renderItem={({ item, index }) => (
-                  handleCategoryException(item) && (
-                    <MagazinList onPress={() => handleListPress(item)}>
-                      <Label>{item.label}</Label>
-                      <NewsInsideView>
-                        <NewsInsideLeftView>
-                          <NewsTitle>{item.title}</NewsTitle>
-                          <NewsContent numberOfLines={3}>{item.content}</NewsContent>
-                        </NewsInsideLeftView>
-                        <NewsImg source={item.img} />
-                      </NewsInsideView>
-                      <NewsTagView>
-                        {magazinArr[index].tags.map((tagsitem, tagsIndex) => (
-                          <NewsTagBox key={tagsIndex}>
-                            <NewsTags>{tagsitem}</NewsTags>
-                          </NewsTagBox>
-                        ))}
-                      </NewsTagView>
-                    </MagazinList>
-                  )
+                  <>
+                    {handleCategoryException(item) && (
+                      <MagazinList onPress={() => handleListPress(item)}>
+                        <Label>{item.label}</Label>
+                        <NewsInsideView>
+                          <NewsInsideLeftView>
+                            <NewsTitle>{item.title}</NewsTitle>
+                            <NewsContent numberOfLines={3}>{item.content}</NewsContent>
+                          </NewsInsideLeftView>
+                          <NewsImg source={item.img} />
+                        </NewsInsideView>
+                        <NewsTagView>
+                          {magazinArr[index].tags.map((tagsitem, tagsIndex) => (
+                            <NewsTagBox key={tagsIndex}>
+                              <NewsTags>{tagsitem}</NewsTags>
+                            </NewsTagBox>
+                          ))}
+                        </NewsTagView>
+                      </MagazinList>
+                    )}
+                  </> 
                 )}
                 numColumns={1}
                 keyExtractor={(item, index) => index.toString()}
@@ -250,8 +269,13 @@ const Search = ({ visible, closeModal}) => {
                 key={'#'}
                 data={data}
                 contentContainerStyle={{ paddingBottom: 40, flexGrow: 1 }}
-                refreshControl={<RefreshControl onRefresh={() => temporaryLoader()} />}
-                renderItem={({ item, index }) => (
+                refreshControl={
+                  <RefreshControl
+                    refreshing={loader}
+                    onRefresh={() => temporaryLoader()}
+                  />
+                }
+                renderItem={({ item }) => (
                   <TravelList onPress={() => handleListPress(item)}>
                     <TravelImg source={item.img} />
                     <TravelTitle numberOfLines={2}>{item.title}</TravelTitle>

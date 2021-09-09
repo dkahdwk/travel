@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { FC, useState, useRef, useContext } from 'react';
 import {
   TouchableWithoutFeedback,
   ActivityIndicator,
@@ -37,15 +37,18 @@ import {
   Version,
 } from './styles';
 
-const Login = ({ navigation, route }) => {
-  const { email, pw } = route.params;
+interface LoginProps {
+  navigation: any;
+};
+
+const Login: FC<LoginProps> = ({ navigation }) => {
   const store = useContext(UserContext);
   const logInManager = useLogIn();
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const [loading, setLoading] = useState(false);
-  const [secureText, setSecureText] = useState(true);
-  const [userInformation, setUserInformation] = useState({
+  const emailRef = useRef<any>();
+  const passwordRef = useRef<any>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [secureText, setSecureText] = useState<boolean>(true);
+  const [userInformation, setUserInformation] = useState<any>({
     email: '',
     pw: '',
   });
@@ -67,7 +70,6 @@ const Login = ({ navigation, route }) => {
       store.kakaoAccessToken = token.accessToken;
       logInManager(true);
     } catch (e) {
-      alert('오류가 발생했습니다.');
       console.log(e);
     } finally {
       // get kakao profile
@@ -159,7 +161,7 @@ const Login = ({ navigation, route }) => {
         console.error(`error: ${e}`)
       } finally {
         setLoading(false);
-        AsyncStorage.getItem('user_information', (err, result) => {
+        AsyncStorage.getItem('user_information', (err, result: any) => {
           const user = JSON.parse(result); //string화 된 result를 parsing
           store.username = user.user_username;
         });
@@ -185,7 +187,7 @@ const Login = ({ navigation, route }) => {
           <InputBorder style={{ borderColor: borderColor.email }}>
             <Input
               value={userInformation.email}
-              onChangeText={(value) => setUserInformation({ ...userInformation, email: value })}
+              onChangeText={(value: string) => setUserInformation({ ...userInformation, email: value })}
               placeholder={'이메일을 입력해주세요'}
               placeholderTextColor="#c4c4c4"
               autoCorrect={false}
@@ -210,7 +212,7 @@ const Login = ({ navigation, route }) => {
             <Input
               style={{ width: userInformation.pw === '' ? '95%' : '88%' }}
               value={userInformation.pw}
-              onChangeText={(value) => setUserInformation({ ...userInformation, pw: value })}
+              onChangeText={(value: string) => setUserInformation({ ...userInformation, pw: value })}
               placeholder={'비밀번호를 입력해주세요'}
               placeholderTextColor="#c4c4c4"
               autoCorrect={false}
@@ -247,7 +249,7 @@ const Login = ({ navigation, route }) => {
             }
           </Button>
           <KakaoButton
-            style={store.kakaoAccessToken === null || { backgroundColor: 'gray' }}
+            style={store.kakaoAccessToken === null ? {} : { backgroundColor: 'gray' }}
             disabled={store.kakaoAccessToken === null ? false : true}
             onPress={signInWithKakao}
           >
@@ -258,7 +260,7 @@ const Login = ({ navigation, route }) => {
             }
           </KakaoButton>
           <GoogleButton
-            style={store.googleUserInfo === null || { backgroundColor: 'gray' }}
+            style={store.googleUserInfo === null ? {} : { backgroundColor: 'gray' }}
             disabled={store.googleUserInfo === null ? false : true}
             onPress={signInWithGoogle}
           >

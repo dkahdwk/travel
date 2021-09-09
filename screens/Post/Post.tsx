@@ -32,15 +32,22 @@ import {
   UploadText,
 } from './styles';
 
-interface =
+interface Props {
+  navigation: any;
+};
+
+interface PostProps {
+  title: string;
+  content: string;
+};
 
 const Post: FC<Props> = ({ navigation }) => {
   const store = useContext(UserContext);
-  const titleRef = useRef();
-  const contentRef = useRef();
-  const [menuVisible, setMenuVisible] = useState(false);
-  const [filePath, setFilePath] = useState({});
-  const [post, setPost] = useState({
+  const titleRef = useRef<any>();
+  const contentRef = useRef<any>();
+  const [menuVisible, setMenuVisible] = useState<boolean>(false);
+  const [filePath, setFilePath] = useState<any>({});
+  const [post, setPost] = useState<PostProps>({
     title: '',
     content: '',
   });
@@ -57,6 +64,7 @@ const Post: FC<Props> = ({ navigation }) => {
           {
             title: 'Camera Permission',
             message: 'App needs camera permission',
+            buttonPositive: 'yes',
           },
         );
         // If CAMERA Permission is granted
@@ -76,20 +84,21 @@ const Post: FC<Props> = ({ navigation }) => {
           {
             title: 'External Storage Write Permission',
             message: 'App needs write permission',
+            buttonPositive: 'yes',
           },
         );
         // If WRITE_EXTERNAL_STORAGE Permission is granted
         return granted === PermissionsAndroid.RESULTS.GRANTED;
       } catch (err) {
         console.warn(err);
-        alert('Write permission err', err);
+        Alert.alert('Write permission err', err);
       }
       return false;
     } else return true;
   };
 
-  const captureImage = async (type) => {
-    let options = {
+  const captureImage = async (type: any) => {
+    let options: any = {
       mediaType: type,
       maxWidth: 300,
       maxHeight: 550,
@@ -101,20 +110,20 @@ const Post: FC<Props> = ({ navigation }) => {
     let isCameraPermitted = await requestCameraPermission();
     let isStoragePermitted = await requestExternalWritePermission();
     if (isCameraPermitted && isStoragePermitted) {
-      launchCamera(options, (response) => {
+      launchCamera(options, (response: any) => {
         console.log('Response = ', response);
 
         if (response.didCancel) {
-          alert('User cancelled camera picker');
+          Alert.alert('User cancelled camera picker');
           return;
         } else if (response.errorCode == 'camera_unavailable') {
-          alert('Camera not available on device');
+          Alert.alert('Camera not available on device');
           return;
         } else if (response.errorCode == 'permission') {
-          alert('Permission not satisfied');
+          Alert.alert('Permission not satisfied');
           return;
         } else if (response.errorCode == 'others') {
-          alert(response.errorMessage);
+          Alert.alert(response.errorMessage);
           return;
         }
         console.log('base64 -> ', response.base64);
@@ -129,8 +138,8 @@ const Post: FC<Props> = ({ navigation }) => {
     }
   };
 
-  const chooseFile = async (type) => {
-    let options = {
+  const chooseFile = async (type: any) => {
+    let options: any = {
       mediaType: type,
       maxWidth: 300,
       maxHeight: 300,
@@ -138,7 +147,7 @@ const Post: FC<Props> = ({ navigation }) => {
     };
     let isStoragePermitted = await requestExternalWritePermission();
     if (isStoragePermitted) {
-      launchImageLibrary(options, (response) => {
+      launchImageLibrary(options, (response: any) => {
         console.log('Response = ', response);
 
         if (response.didCancel) {

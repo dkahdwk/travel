@@ -30,8 +30,8 @@ const Confirm: FC<Props> = ({ navigation }) => {
   const space = /\s/g; 
   const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const emailRef = useRef<any>();
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>('');
   const [borderColor, setBorderColor] = useState(ENUM_BORDER_COLOR.INACTIVE);
 
   const handleConfirm = () => {

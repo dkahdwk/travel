@@ -3,13 +3,13 @@ import { StatusBarComponent } from '@components/StatusBarComponent';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styled from 'styled-components/native';
 
-export interface NavProps {
+interface Props {
   navigation: any;
   closeModal: any;
   title: string;
 };
 
-const NavTop: FC<NavProps> = ({ navigation, closeModal, title }) => {
+const NavTop: FC<Props> = ({ navigation, closeModal, title }) => {
   const buttonHandler = () => {
     if (navigation === undefined) {
       closeModal();

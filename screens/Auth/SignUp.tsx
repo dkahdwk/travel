@@ -1,6 +1,5 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { FC, useState, useContext, useRef } from 'react';
 import {
-  TouchableOpacity,
   TouchableWithoutFeedback,
   ActivityIndicator,
   Keyboard,
@@ -26,18 +25,22 @@ import {
   SignUpText,
 } from './styles';
 
-const SignUp = ({ navigation }) => {
+interface SignUpProps {
+  navigation: any;
+};
+
+const SignUp: FC<SignUpProps> = ({ navigation }) => {
   const store = useContext(UserContext);
   const regex = / /gi;
   const space = /\s/g; 
   const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const confirmPasswordRef = useRef();
-  const [loading, setLoading] = useState(false);
-  const [secureText, setSecureText] = useState(true);
-  const [confirmSecureText, setConfirmSecureText] = useState(true);
-  const [checkEmail, setCheckEmail] = useState(false);
+  const emailRef = useRef<any>();
+  const passwordRef = useRef<any>();
+  const confirmPasswordRef = useRef<any>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [secureText, setSecureText] = useState<boolean>(true);
+  const [confirmSecureText, setConfirmSecureText] = useState<boolean>(true);
+  const [checkEmail, setCheckEmail] = useState<boolean>(false);
   const [userInformation, setUserInformation] = useState({
     email: '',
     pw: '',
@@ -151,7 +154,7 @@ const SignUp = ({ navigation }) => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <>
-        <NavTop navigation={navigation} />
+        <NavTop navigation={navigation} closeModal={null} title={''} />
         <Container contentContainerStyle={{ flex: 1, alignItems: 'center' }}>
           <Title>이메일로 가입하기</Title>
           <SignUpInputTitle>이메일</SignUpInputTitle>
@@ -159,7 +162,7 @@ const SignUp = ({ navigation }) => {
             <Input
               style={{ width: userInformation.email === '' ? '95%' : '86%' }}
               value={userInformation.email}
-              onChangeText={(value) => {
+              onChangeText={(value: string) => {
                 setUserInformation({...userInformation, email: value });
                 setCheckEmail(false);
               }}
@@ -196,7 +199,7 @@ const SignUp = ({ navigation }) => {
             <Input
               style={{ width: userInformation.pw === '' ? '95%' : '88%' }}
               value={userInformation.pw}
-              onChangeText={(value) => {
+              onChangeText={(value: string) => {
                 setUserInformation({...userInformation, pw: value })
               }}
               placeholder={'비밀번호를 입력하세요'}
@@ -233,7 +236,7 @@ const SignUp = ({ navigation }) => {
             <Input
               style={{ width: userInformation.confirmPw === '' ? '95%' : '88%' }}
               value={userInformation.confirmPw}
-              onChangeText={(value) => {
+              onChangeText={(value: string) => {
                 setUserInformation({...userInformation, confirmPw: value })
               }}
               placeholder={'비밀번호를 한번 더 입력하세요'}
@@ -267,7 +270,7 @@ const SignUp = ({ navigation }) => {
           </SignUpInputBorder>
           <SignUpButton
             onPress={handleSignUp}
-            disable={loading}
+            disabled={loading}
           >
             {loading
               ? <ActivityIndicator color={"white"} />

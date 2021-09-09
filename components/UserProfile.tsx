@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import { FlatList, RefreshControl } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import Modal from 'react-native-modal';
 import Loader from '@components/Loader';
-import styled from 'styled-components';
-import constants from "@root/constants";
+import styled from 'styled-components/native';
 import NavTop from '@components/NavTop';
 import PostModal from '@components/PostModal';
 import { UserContext } from '@store/StateStore';
@@ -24,11 +24,29 @@ import {
   EmptySubtitle,
 } from '@screens/Profile/styles';
 
-const UserProfile = ({ content, visible, closeModal }) => {
+interface Props {
+  content: {
+    username: string,
+    title: string,
+    content: string,
+    date: string,
+    img: object,
+    like: number,
+  };
+  visible: boolean;
+  closeModal: any;
+};
+
+interface PostModalProps {
+  content: any;
+  visible: boolean;
+};
+
+const UserProfile: FC<Props> = ({ content, visible, closeModal }) => {
   const store = useContext(UserContext);
-  const [loader, setLoader] = useState(false);
-  const [postModal, setPostModal] = useState({
-    content: '',
+  const [loader, setLoader] = useState<boolean>(false);
+  const [postModal, setPostModal] = useState<PostModalProps>({
+    content: {},
     visible: false,
   });
 
@@ -39,7 +57,7 @@ const UserProfile = ({ content, visible, closeModal }) => {
   };
 
   // onPress event of list
-  const showPostModal = (item) => {
+  const showPostModal = (item: {}) => {
     setPostModal({ content: item, visible: true });
   };
 
@@ -81,7 +99,7 @@ const UserProfile = ({ content, visible, closeModal }) => {
       style={{ margin: 0, alignItems: 'flex-end' }}
     >
       <ModalView>
-        <NavTop closeModal={closeModal} title={"계정 정보"} />
+        <NavTop navigation={undefined} closeModal={closeModal} title={"계정 정보"} />
         {/* 포스트 modal */}
         <PostModal
           content={postModal.content}
@@ -92,9 +110,14 @@ const UserProfile = ({ content, visible, closeModal }) => {
           <Loader /> 
         ) : (
           <FlatList
-            data={''}
+            data={null}
             contentContainerStyle={{ paddingBottom: 40, flexGrow: 1 }}
-            refreshControl={<RefreshControl onRefresh={() => temporaryLoader()} />}
+            refreshControl={
+              <RefreshControl
+                refreshing={loader}
+                onRefresh={() => temporaryLoader()}
+              />
+            }
             ListHeaderComponent={listHeaderComponent}
             renderItem={({ item }) => (
               <TravelList onPress={() => showPostModal(item)}>

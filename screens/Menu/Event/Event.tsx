@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import NavTop from '@components/NavTop';
 import Modal from 'react-native-modal';
 import { ModalView, Title } from './styles';
 
-const Event = ({ visible, closeModal }) => {
+interface Props {
+  visible: boolean;
+  closeModal: any;
+};
+
+const Event: FC<Props> = ({ visible, closeModal }) => {
   return (
     <Modal
       isVisible={visible}
@@ -15,7 +20,7 @@ const Event = ({ visible, closeModal }) => {
       style={{ margin: 0, alignItems: 'flex-end' }}
     >
       <ModalView>
-        <NavTop closeModal={closeModal} title={"이벤트"} />
+        <NavTop navigation={undefined} closeModal={closeModal} title={"이벤트"} />
         <Title>이벤트를 준비중입니다.</Title>
       </ModalView>
     </Modal>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavController from '@components/NavController';
-import StoreProvider from 'store/StateStore';
+import StoreProvider from '@store/StateStore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SplashScreen from 'react-native-splash-screen';
 import codePush from "react-native-code-push";

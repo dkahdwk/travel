@@ -1,5 +1,5 @@
 import { Platform } from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import constants from "@root/constants";
 
 export const Container = styled.ScrollView`

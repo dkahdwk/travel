@@ -15,7 +15,7 @@ const TabNavigation = () => {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, size, color }) => {
-          let iconName;
+          let iconName = '';
           if (route.name === '홈') {
             iconName = focused ? 'home' : 'home';
             color = focused ? '#2ed6df' : '#ccc';

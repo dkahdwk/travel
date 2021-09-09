@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import constants from "@root/constants";
 import UserProfile from '@components/UserProfile';
 import { TransparentStatusBarComponent } from '@components/StatusBarComponent';
 
-const PostModal = ({ content, visible, closeModal }) => {
-  const [userProfileModalVisible, setUserProfileModalVisible] = useState(false);
+interface Props {
+  content: {
+    username: string,
+    title: string,
+    content: string,
+    date: string,
+    img: {},
+    like: number,
+  };
+  visible: boolean;
+  closeModal: any;
+};
 
+const PostModal: FC<Props> = ({ content, visible, closeModal }) => {
+  const [userProfileModalVisible, setUserProfileModalVisible] = useState(false);
+  console.log(content);
   return (
     <Modal
       isVisible={visible}

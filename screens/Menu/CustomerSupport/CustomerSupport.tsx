@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import NavTop from '@components/NavTop';
@@ -11,7 +11,12 @@ import {
   Content,
 } from './styles';
 
-const CustomerSupport = ({ visible, closeModal }) => {
+interface Props {
+  visible: boolean;
+  closeModal: any;
+};
+
+const CustomerSupport: FC<Props> = ({ visible, closeModal }) => {
   return (
     <Modal
       isVisible={visible}
@@ -23,7 +28,7 @@ const CustomerSupport = ({ visible, closeModal }) => {
       style={{ margin: 0, alignItems: 'flex-end' }}
     >
       <ModalView>
-        <NavTop closeModal={closeModal} title={"고객지원"} />
+        <NavTop navigation={undefined} closeModal={closeModal} title={"고객지원"} />
         <Box>
           <BoxLeft>
             <Icon name="headset-mic" size={30} color={"#333"} />

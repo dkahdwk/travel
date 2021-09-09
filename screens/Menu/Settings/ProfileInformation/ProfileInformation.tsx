@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Modal from 'react-native-modal';
 import NavTop from '@components/NavTop';
 import {
   ModalView,
 } from './styles';
 
-const ProfileInformation = ({ visible, closeModal }) => {
+interface Props {
+  visible: boolean;
+  closeModal: any;
+};
+
+const ProfileInformation: FC<Props> = ({ visible, closeModal }) => {
   return (
     <Modal
       isVisible={visible}
@@ -17,7 +22,7 @@ const ProfileInformation = ({ visible, closeModal }) => {
       style={{ margin: 0, alignItems: 'flex-end' }}
     >
       <ModalView>
-        <NavTop closeModal={closeModal} title={"계정 정보"} />
+        <NavTop navigation={undefined} closeModal={closeModal} title={"계정 정보"} />
       </ModalView>
     </Modal>
   );

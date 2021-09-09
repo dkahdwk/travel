@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import { TouchableOpacity, FlatList, RefreshControl } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Menu from '@screens/Menu/Menu';
@@ -26,11 +26,21 @@ import {
   EmptySubtitle,
 } from './styles';
 
-const Profile = ({ navigation }) => {
+interface Props {
+  navigation: any;
+};
+
+interface ModalProps {
+  content: any;
+  menuVisible: boolean;
+  postVisible: boolean;
+};
+
+const Profile: FC<Props> = ({ navigation }) => {
   const store = useContext(UserContext);
-  const [loader, setLoader] = useState(false);
-  const [modal, setModal] = useState({
-    content: '',
+  const [loader, setLoader] = useState<boolean>(false);
+  const [modal, setModal] = useState<ModalProps>({
+    content: {},
     menuVisible: false,
     postVisible: false,
   });
@@ -42,7 +52,7 @@ const Profile = ({ navigation }) => {
   };
 
   // onPress event of list
-  const showPostModal = (item) => {
+  const showPostModal = (item: {}) => {
     setModal({ ...modal, content: item, postVisible: true });
   };
 
@@ -106,7 +116,12 @@ const Profile = ({ navigation }) => {
         <FlatList
           data={myTravelArr}
           contentContainerStyle={{ paddingBottom: 40, flexGrow: 1 }}
-          refreshControl={<RefreshControl onRefresh={() => temporaryLoader()} />}
+          refreshControl={
+            <RefreshControl
+              refreshing={loader}
+              onRefresh={() => temporaryLoader()}
+            />
+          }
           ListHeaderComponent={listHeaderComponent}
           renderItem={({ item }) => (
             <TravelList onPress={() => showPostModal(item)}>
