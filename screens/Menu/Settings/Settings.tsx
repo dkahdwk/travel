@@ -112,8 +112,7 @@ const Settings: FC<Props> = ({ visible, closeModal }) => {
                 <Content>{item}</Content>
                 <Image
                   style={{ width: 5, height: 9 }}
-                  // source={require('@assets/arrow-right.png')}
-                  source={{ uri: 'https://i.postimg.cc/RVYWdvP3/arrow-right.png' }}
+                  source={require('@assets/arrow-right.png')}
                 />
               </ContentButton>
             ))}

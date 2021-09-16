@@ -182,8 +182,7 @@ const Login: FC<LoginProps> = ({ navigation }) => {
             flex: 1, justifyContent: 'center', alignItems: 'center'
           }}
         >
-          {/* <AppIcon source={require('@assets/app_icon_120.png')} /> */}
-          <AppIcon source={{ uri: 'https://i.postimg.cc/Zq9d8CPD/app-icon-120.png' }} />
+          <AppIcon source={require('@assets/app_icon_120.png')} />
           <InputBorder style={{ borderColor: borderColor.email }}>
             <Input
               value={userInformation.email}
@@ -204,7 +203,7 @@ const Login: FC<LoginProps> = ({ navigation }) => {
             />
             {userInformation.email !== "" &&
               <IconButton onPress={() => setUserInformation({ ...userInformation, email: '' })}>
-                <DeleteImage source={{ uri: 'https://i.postimg.cc/xdKbxB7K/login-delete.png' }} />
+                <DeleteImage source={require('@assets/login-delete.png')} />
               </IconButton>
             }
           </InputBorder>
@@ -229,7 +228,7 @@ const Login: FC<LoginProps> = ({ navigation }) => {
             />
             {userInformation.pw !== "" &&
               <IconButton onPress={() => setUserInformation({ ...userInformation, pw: '' })}>
-                <DeleteImage source={{ uri: 'https://i.postimg.cc/xdKbxB7K/login-delete.png' }} />
+                <DeleteImage source={require('@assets/login-delete.png')} />
               </IconButton>
             }
             <IconButton onPress={secureTextButton}>
@@ -253,7 +252,7 @@ const Login: FC<LoginProps> = ({ navigation }) => {
             disabled={store.kakaoAccessToken === null ? false : true}
             onPress={signInWithKakao}
           >
-            <KakaoLogo source={{ uri: 'https://i.postimg.cc/R0b2YbHZ/kakao-logo.png' }} />
+            <KakaoLogo source={require('@assets/kakao_logo.png')} />
             {store.kakaoAccessToken === null
               ? <KakaoButtonText>카카오로 로그인</KakaoButtonText>
               : <KakaoButtonText style={{ color: 'white' }}>카카오로 로그인중입니다</KakaoButtonText>
