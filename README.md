@@ -1,8 +1,6 @@
 
 ### 프로젝트 스택
-<img src="https://img.shields.io/badge/React%20Native-000?style=flat-square&logo=react"/>
-<img src="https://img.shields.io/badge/javascript-fff?style=flat-square&logo=javascript"/>
-<img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white"/>
+<img src="https://img.shields.io/badge/React%20Native-000?style=flat-square&logo=react"/> <img src="https://img.shields.io/badge/javascript-fff?style=flat-square&logo=javascript"/> <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=white"/>
 
 
 # 떠나자여행
