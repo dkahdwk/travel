@@ -123,8 +123,7 @@ const Menu: FC<Props> = ({ navigation, visible, closeModal, username }) => {
             </MenuLeft>
             <Image
               style={{ width: 5, height: 9 }}
-              // source={require('@assets/arrow-right.png')}
-              source={{ uri: 'https://i.postimg.cc/RVYWdvP3/arrow-right.png' }}
+              source={require('@assets/arrow-right.png')}
             />
           </MenuList>
         ))}

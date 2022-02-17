@@ -70,12 +70,11 @@ const Confirm: FC<Props> = ({ navigation }) => {
       <>
         <NavTop navigation={navigation} title={''} closeModal={null} />
         <Container contentContainerStyle={{ flex: 1, alignItems: 'center' }}>
-          {/* <AppIcon source={require('@assets/app_icon_120.png')} /> */}
-          <AppIcon source={{ uri: 'https://i.postimg.cc/Zq9d8CPD/app-icon-120.png' }} />
+          <AppIcon source={require('@assets/app_icon_120.png')} />
           <Title>비밀번호 재설정</Title>
           <MidContainer>
             <ConfirmSubtitle>
-              회원정보에 등록된 이메일 주소를 입력하면 비밀번호를 재설정할 수 있는 링크가 연결됩니다.
+              회원정보에 등록된 이메일 주소를 입력하면 비밀번호를 재설정할 수 있는 링크가 연결됩니다!
             </ConfirmSubtitle>
             <ConfirmInputBorder style={{ borderColor: borderColor }}>
               <Input
@@ -92,7 +91,7 @@ const Confirm: FC<Props> = ({ navigation }) => {
               />
               {email !== "" &&
                 <IconButton onPress={() => setEmail('')}>
-                  <DeleteImage source={{ uri: 'https://i.postimg.cc/xdKbxB7K/login-delete.png' }} />
+                  <DeleteImage source={require('@assets/login-delete.png')} />
                 </IconButton>
               }
             </ConfirmInputBorder>

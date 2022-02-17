@@ -231,7 +231,7 @@ const Post: FC<Props> = ({ navigation }) => {
               />
               {post.title !== "" &&
                 <IconButton onPress={() => setPost({ ...post, title: '' })}>
-                  <DeleteImage source={{ uri: 'https://i.postimg.cc/xdKbxB7K/login-delete.png' }} />
+                  <DeleteImage source={require('@assets/login-delete.png')} />
                 </IconButton>
               }
             </InputBorder>

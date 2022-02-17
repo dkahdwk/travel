@@ -25,7 +25,7 @@ PODS:
     - AppCenter/Core (= 4.2.0)
   - Base64 (1.1.2)
   - boost-for-react-native (1.63.0)
-  - CodePush (7.0.2):
+  - CodePush (7.0.1):
     - Base64 (~> 1.1)
     - JWT (~> 3.0.0-beta.12)
     - React-Core
@@ -688,7 +688,7 @@ SPEC CHECKSUMS:
   AppCenterReactNativeShared: ef370308277adf71ec1586798b196e4cc35335ea
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  CodePush: 71915cd671d09614848cd5515f71d9cb4e88b3f7
+  CodePush: 9bb93f52a44ee80b72739d89dead9c7e86c3bd3a
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
   FBReactNativeSpec: de41f000fcc517220751cc8e0119ef6907ca6d53
